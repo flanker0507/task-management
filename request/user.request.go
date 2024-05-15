@@ -6,6 +6,7 @@ type UserCreateRequest struct {
 	Password string `json:"password" validate:"required"`
 	Address  string `json:"address" `
 	Phone    string `json:"phone" `
+	Role     string `json:"role"`
 }
 
 type UserUpdateRequest struct {

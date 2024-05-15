@@ -48,6 +48,7 @@ func UserHandlerCreate(ctx *fiber.Ctx) error {
 		Email:   user.Email,
 		Address: user.Address,
 		Phone:   user.Phone,
+		Role:    user.Role,
 	}
 
 	hashedPassword, err := utils.HashingPassword(user.Password)
@@ -91,7 +92,7 @@ func UpdateUserById(ctx *fiber.Ctx) error {
 		})
 	}
 
-	todoId := ctx.Locals("id")
+	todoId := ctx.Locals("user_id")
 	todo := models.User{}
 
 	if err := database.DB.First(&todo, "id = ?", &todoId).Error; err != nil {
