@@ -10,7 +10,7 @@ type UserCreateRequest struct {
 
 type UserUpdateRequest struct {
 	Name    string `json:"name"`
-	Email   string `json:"email" validate:"required"`
+	Email   string `json:"email" gorm:"unique"`
 	Address string `json:"address"`
 	Phone   string `json:"phone"`
 }

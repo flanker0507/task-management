@@ -91,12 +91,12 @@ func UpdateUserById(ctx *fiber.Ctx) error {
 		})
 	}
 
-	todoId := ctx.Params("id")
+	todoId := ctx.Locals("id")
 	todo := models.User{}
 
 	if err := database.DB.First(&todo, "id = ?", &todoId).Error; err != nil {
 		return ctx.Status(404).JSON(fiber.Map{
-			"message": "todo not found",
+			"message": "user not found",
 		})
 	}
 	todo.Name = userReq.Name

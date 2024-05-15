@@ -21,15 +21,15 @@ func AuthMiddleware(ctx *fiber.Ctx) error {
 		})
 	}
 
-	role := claims["role"].(string)
-	if role != "admin" {
+	role := claims["id"].(float64)
+	if role != 0 {
 		return ctx.Status(fiber.StatusForbidden).JSON(fiber.Map{
 			"message": "forbidden access",
 		})
 	}
 
 	//ctx.Locals("userInfo", claims)
-	//ctx.Locals("userInfo", claims["role"])
+	ctx.Locals("user_id", claims["id"])
 
 	return ctx.Next()
 }

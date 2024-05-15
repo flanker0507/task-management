@@ -48,16 +48,17 @@ func LoginHandler(ctx *fiber.Ctx) error {
 
 	// GENERATE JWT
 	claims := jwt.MapClaims{}
+	claims["id"] = user.ID
 	claims["name"] = user.Name
 	claims["email"] = user.Email
 	claims["address"] = user.Address
-	claims["exp"] = time.Now().Add(time.Minute * 2).Unix()
-
-	if user.Email == "yuda@gmail.com" {
-		claims["role"] = "admin"
-	} else {
-		claims["role"] = "user"
-	}
+	claims["exp"] = time.Now().Add(time.Minute * 60).Unix()
+	//
+	//if user.Email == "yuda@gmail.com" {
+	//	claims["role"] = "admin"
+	//} else {
+	//	claims["role"] = "user"
+	//}
 
 	token, errGenerateToken := utils.GenerateToken(&claims)
 	if errGenerateToken != nil {

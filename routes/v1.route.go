@@ -26,6 +26,6 @@ func v1Route(app *fiber.App) {
 	user.Post("/", controllers.UserHandlerCreate)
 	user.Post("/login", controllers.LoginHandler)
 	user.Get("/", middleware.AuthMiddleware, controllers.UserHandlerGetAll)
-	user.Patch("/:id", controllers.UpdateUserById)
+	user.Put("/", middleware.AuthMiddleware, controllers.UpdateUserById)
 	user.Delete("/:id", controllers.DeleteUserById)
 }
