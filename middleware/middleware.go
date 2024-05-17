@@ -13,22 +13,12 @@ func AuthMiddleware(ctx *fiber.Ctx) error {
 		})
 	}
 
-	//_, err := utils.VerifyToken(token)
 	claims, err := utils.DecodeToken(token)
 	if err != nil {
 		return ctx.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
 			"message": "unauthenticated",
 		})
 	}
-
-	//role := claims["id"].(float64)
-	//if role != 0 {
-	//	return ctx.Status(fiber.StatusForbidden).JSON(fiber.Map{
-	//		"message": "forbidden access",
-	//	})
-	//}
-
-	//ctx.Locals("userInfo", claims)
 	ctx.Locals("user_id", claims["id"])
 	ctx.Locals("role", claims["role"])
 

@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1111454f-01cf-4591-b3da-ca0e52284129" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8cd41c0-b1ce-4819-adeb-e8646297865a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8cd41c0-b1ce-4819-adeb-e8646297865a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/auth.controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/auth.controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user.controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.controller.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middleware/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/middleware.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.model.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.model.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/request/user.request.go" beforeDir="false" afterPath="$PROJECT_DIR$/request/user.request.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/v1.route.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/v1.route.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
