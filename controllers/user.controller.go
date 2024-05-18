@@ -92,27 +92,35 @@ func UpdateUserById(ctx *fiber.Ctx) error {
 		})
 	}
 
-	todoId := ctx.Locals("user_id")
-	todo := models.User{}
+	userId := ctx.Locals("user_id")
+	user := models.User{}
 
-	if err := database.DB.First(&todo, "id = ?", &todoId).Error; err != nil {
+	if err := database.DB.First(&user, "id = ?", &userId).Error; err != nil {
 		return ctx.Status(404).JSON(fiber.Map{
 			"message": "user not found",
 		})
 	}
-	todo.Name = userReq.Name
-	todo.Email = userReq.Email
-	todo.Address = userReq.Address
-	todo.Phone = userReq.Phone
 
-	if errSave := database.DB.Save(&todo).Error; errSave != nil {
+	var existingUser models.User
+	if err := database.DB.Where("email = ? AND id != ?", userReq.Email, userId).First(&existingUser).Error; err == nil {
+		return ctx.Status(400).JSON(fiber.Map{
+			"message": "email already exists",
+		})
+	}
+	user.Name = userReq.Name
+	user.Email = userReq.Email
+	user.Address = userReq.Address
+	user.Phone = userReq.Phone
+
+	if errSave := database.DB.Save(&user).Error; errSave != nil {
+		log.Println("Error saving user:", errSave)
 		return ctx.Status(500).JSON(fiber.Map{
 			"message": "internal server error",
 		})
 	}
 	return ctx.JSON(fiber.Map{
-		"message": "todo updated",
-		"data":    todo,
+		"message": "user updated",
+		"data":    user,
 	})
 }
 
