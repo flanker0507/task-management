@@ -16,7 +16,7 @@ func v1Route(app *fiber.App) {
 	todo.Get("/", controllers.GetAllTodo)
 
 	todo.Get("/:id", controllers.GetTodoById)
-	todo.Patch("/:id", controllers.UpdateTodoById)
+	todo.Put("/:id", controllers.UpdateTodoById)
 	todo.Delete("/:id", controllers.DeleteTodoById)
 
 	v2 := app.Group("/v2")
@@ -26,6 +26,6 @@ func v1Route(app *fiber.App) {
 	user.Post("/", controllers.UserHandlerCreate)
 	user.Post("/login", controllers.LoginHandler)
 	user.Get("/", middleware.AuthMiddleware, middleware.CheckAdminMiddleware, controllers.UserHandlerGetAll)
-	user.Put("/", middleware.AuthMiddleware, middleware.CheckAdminMiddleware, controllers.UpdateUserById)
-	user.Delete("/:id", controllers.DeleteUserById)
+	user.Put("/:id", middleware.AuthMiddleware, middleware.CheckAdminMiddleware, controllers.UpdateUserById)
+	user.Delete("/:id", middleware.AuthMiddleware, middleware.CheckAdminMiddleware, controllers.DeleteUserById)
 }

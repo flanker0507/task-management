@@ -9,47 +9,6 @@ import (
 	"log"
 )
 
-//
-//func CreateTodo(ctx *fiber.Ctx) error {
-//	todoReq := request.TodoUpdateeRequest{}
-//
-//	// PARSE REQUEST BODY
-//	if errParse := ctx.BodyParser(&todoReq); errParse != nil {
-//		return ctx.Status(500).JSON(fiber.Map{
-//			"message": "fail to parsing data",
-//			"error":   errParse.Error(),
-//		})
-//	}
-//
-//	// VALIDATION DATA REQUEST
-//	validate := validator.New()
-//	if errValidate := validate.Struct(&todoReq); errValidate != nil {
-//		return ctx.Status(400).JSON(fiber.Map{
-//			"message": "some data is not valid",
-//			"error":   errValidate.Error(),
-//		})
-//	}
-//
-//	// INSERT DATA KE DATABASE
-//	todo := models.Todo{}
-//	todo.Name = todoReq.Name
-//	todo.IsComplete = todoReq.IsComplete
-//	if todoReq.Note != "" {
-//		todo.Note = &todoReq.Note
-//	}
-//
-//	if errDB := database.DB.Create(&todo).Error; errDB != nil {
-//		log.Println("todo.controller.go ==> CreateTodo :: ", errDB)
-//		return ctx.Status(500).JSON(fiber.Map{
-//			"message": "internal server error",
-//		})
-//	}
-//	return ctx.Status(201).JSON(fiber.Map{
-//		"message": "todo crated successfully",
-//		"data":    todo,
-//	})
-//}
-
 func CreateTodo(ctx *fiber.Ctx) error {
 	todoReq := request.TodoUpdateeRequest{} // Ensure this request struct includes `UserID`
 
